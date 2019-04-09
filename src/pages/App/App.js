@@ -4,15 +4,23 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
+import LandingPage from "../LandingPage/LandingPage";
 import userService from "../../utils/userService";
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = { user: null };
+  }
+
   handleLogout = () => {
     userService.logout();
     this.setState({ user: null });
   };
 
   handleSignupOrLogin = () => {
+    console.log("hitting");
     this.setState({ user: userService.getUser() });
   };
 
@@ -27,7 +35,16 @@ class App extends Component {
     return (
       <div>
         <header className="header-footer">MY HOLISTIC SOCIAL MEDIA APP</header>
-        <NavBar />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <LandingPage
+            handleLogout={this.handleLogout}
+            user={this.state.user}
+            />
+          )}
+        />
         <Switch>
           <Route
             exact
