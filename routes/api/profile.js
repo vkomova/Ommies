@@ -6,11 +6,13 @@ const mongoose = require('mongoose');
 const Profile = require("../../models/profile");
 const User = require("../../models/user");
 
-router.get("/test", profileCtrl.test);
-
 router.use(require('../../config/auth'));
 router.get("/", profileCtrl.view);
-router.post("/", profileCtrl.create);
+router.post("/", profileCtrl.createorupdate);
+
+
+// router.get("/", checkAuth, profileCtrl.view);
+// router.post("/", checkAuth, profileCtrl.createorupdate);
 
 
 /*----- Helper Functions -----*/
