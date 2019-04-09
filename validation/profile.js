@@ -3,7 +3,7 @@ const isEmpty = require("./is-empty");
 
 module.exports = function validateProfileInput(data) {
   let errors = {};
-
+  console.log(data);
   data.handle = !isEmpty(data.handle) ? data.handle : "";
 
   if (!Validator.isLength(data.handle, { min: 2, max: 40 })) {
