@@ -68,12 +68,14 @@ function createorupdate(req, res) {
 
   Profile.findOne({ user: req.user.id }).then(profile => {
     if (profile) {
+      console.log('hitting update profile');
       Profile.findOneAndUpdate(
         { user: req.user.id },
         { $set: profileFields },
         { new: true }
       ).then(profile => res.json(profile));
     } else {
+      console.log('hitting new profile');
       Profile.findOne({ handle: profileFields.handle }).then(profile => {
         if (profile) {
           errors.handle = "That handle already exists";
