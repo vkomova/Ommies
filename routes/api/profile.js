@@ -9,8 +9,9 @@ const User = require("../../models/user");
 router.use(require("../../config/auth"));
 router.get("/", checkAuth, profileCtrl.view);
 router.post("/", checkAuth, profileCtrl.createorupdate);
-router.get('/handle/:handle', profileCtrl.handleviewprofile);
-router.get('/user/:user_id', profileCtrl.userviewprofile);
+router.delete("/", checkAuth, profileCtrl.deleteUserandProfile);
+router.get("/handle/:handle", profileCtrl.handleviewprofile);
+router.get("/user/:user_id", profileCtrl.userviewprofile);
 
 /*----- Helper Functions -----*/
 function checkAuth(req, res, next) {

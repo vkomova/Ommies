@@ -20,7 +20,6 @@ class App extends Component {
   };
 
   handleSignupOrLogin = () => {
-    console.log("hitting");
     this.setState({ user: userService.getUser() });
   };
 

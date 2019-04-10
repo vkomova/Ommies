@@ -7,11 +7,9 @@ const validateProfileInput = require("../validation/profile");
 //   console.log("Profile works");
 // }
 
-function handleviewprofile(req, res) {
+async function handleviewprofile(req, res) {
   const errors = {};
-
   Profile.findOne({ handle: req.params.handle })
-    .populate("user", ["name"])
     .then(profile => {
       if (!profile) {
         errors.noprofile = "There is no profile created for this user";
@@ -22,11 +20,10 @@ function handleviewprofile(req, res) {
     .catch(err => res.status(404).json(err));
 }
 
-function userviewprofile(req, res) {
+async function userviewprofile(req, res) {
   const errors = {};
-
+  console.log(req.params.user_id);
   Profile.findOne({ user: req.params.user_id })
-    .populate("user", ["name"])
     .then(profile => {
       if (!profile) {
         errors.noprofile = "There is no profile created for this user";
@@ -43,7 +40,7 @@ function view(req, res) {
     .populate("user", ["name"])
     .then(profile => {
       if (!profile) {
-        errors.noprofile = "There is no profile for this user";
+        errors.noprofile = "There is no profile created for this user";
         return res.status(404).json(errors);
       }
       res.json(profile);
@@ -88,9 +85,18 @@ function createorupdate(req, res) {
   });
 }
 
+function deleteUserandProfile(req, res) {
+  Profile.findOneAndRemove({ user: req.user.id }).then(() => {
+    User.findOneAndRemove({ _id: req.user.id }).then(() =>
+      res.json({ success: true })
+    );
+  });
+}
+
 module.exports = {
   view,
   createorupdate,
   handleviewprofile,
-  userviewprofile
+  userviewprofile,
+  deleteUserandProfile
 };
