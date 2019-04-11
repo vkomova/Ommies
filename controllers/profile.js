@@ -63,17 +63,16 @@ function createorupdate(req, res) {
   if (req.body.github) profileFields.social.github = req.body.github;
   if (req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
   if (req.body.date) profileFields.date = req.body.date;
+  console.log(profileFields + "1");
 
   Profile.findOne({ user: req.user }).then(profile => {
     if (profile) {
-      console.log(profile);
       Profile.findOneAndUpdate(
         { user: req.user },
         { $set: profileFields },
         { new: true }
       ).then(profile => res.json(profile));
     } else {
-      console.log("hitting new profile");
       Profile.findOne({ handle: profileFields.handle }).then(profile => {
         if (profile) {
           errors.handle = "That handle already exists";
