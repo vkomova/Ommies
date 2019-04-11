@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, Switch, Redirect } from "react-router-dom";
-import NavBar from "../../components/NavBar/NavBar";
+import { Route, Switch } from "react-router-dom";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import LandingPage from "../LandingPage/LandingPage";
+import CreateProfile from "../CreateProfile/CreateProfile";
 import userService from "../../utils/userService";
 
 class App extends Component {
-
   constructor() {
     super();
     this.state = { user: null };
@@ -32,15 +31,14 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <header className="header-footer">MY HOLISTIC SOCIAL MEDIA APP</header>
+      <div className="App">
         <Route
           exact
           path="/"
           render={() => (
             <LandingPage
-            handleLogout={this.handleLogout}
-            user={this.state.user}
+              handleLogout={this.handleLogout}
+              user={this.state.user}
             />
           )}
         />
@@ -64,6 +62,11 @@ class App extends Component {
                 handleSignupOrLogin={this.handleSignupOrLogin}
               />
             )}
+          />
+          <Route
+            exact
+            path="/profile"
+            render={({ history }) => <CreateProfile history={history} />}
           />
         </Switch>
       </div>
