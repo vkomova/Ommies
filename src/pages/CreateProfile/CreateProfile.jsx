@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import TextArea from "../../components/TextArea/TextArea";
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import TextFieldGroup from "../../components/TextFieldGroup/TextFieldGroup";
 import TextAreaFieldGroup from "../../components/TextAreaFieldGroup/TextAreaFieldGroup";
 import { createProfile } from "../../utils/profileService";
@@ -22,6 +21,12 @@ class CreateProfile extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   onSubmit(e) {
@@ -57,7 +62,6 @@ class CreateProfile extends Component {
             onChange={this.onChange}
             info="A unique handle for your profile URL."
           />
-
           <TextFieldGroup
             placeholder="Location"
             name="location"
@@ -100,7 +104,6 @@ class CreateProfile extends Component {
             onChange={this.onChange}
             info="Add your LinkedIn"
           />
-
           <input
             type="submit"
             value="Submit"
@@ -120,6 +123,9 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { createProfile })(
-  withRouter(CreateProfile)
-);
+export default connect(
+  mapStateToProps,
+  { createProfile }
+)(withRouter(CreateProfile));
+
+// export default CreateProfile;
