@@ -54,22 +54,21 @@ function createorupdate(req, res) {
     return res.status(400).json(errors);
   }
   const profileFields = {};
-  profileFields.user = req.user.id;
+  profileFields.user = req.user;
   if (req.body.handle) profileFields.handle = req.body.handle;
   if (req.body.location) profileFields.location = req.body.location;
   if (req.body.bio) profileFields.bio = req.body.bio;
-  profileFields.social = {};
   if (req.body.instagram) profileFields.social.instagram = req.body.instagram;
   if (req.body.twitter) profileFields.social.twitter = req.body.twitter;
   if (req.body.github) profileFields.social.github = req.body.github;
   if (req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
   if (req.body.date) profileFields.date = req.body.date;
 
-  Profile.findOne({ user: req.user.id }).then(profile => {
+  Profile.findOne({ user: req.user }).then(profile => {
     if (profile) {
-      console.log("hitting update profile");
+      console.log(profile);
       Profile.findOneAndUpdate(
-        { user: req.user.id },
+        { user: req.user },
         { $set: profileFields },
         { new: true }
       ).then(profile => res.json(profile));

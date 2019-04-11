@@ -5,11 +5,13 @@ import { withRouter } from "react-router-dom";
 import TextFieldGroup from "../../components/TextFieldGroup/TextFieldGroup";
 import TextAreaFieldGroup from "../../components/TextAreaFieldGroup/TextAreaFieldGroup";
 import { createProfile } from "../../utils/profileService";
+import userService from "../../utils/userService";
 
 class CreateProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: null,
       handle: "",
       location: "",
       bio: "",
@@ -23,6 +25,11 @@ class CreateProfile extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  async componentDidMount() {
+    const user = userService.getUser();
+    this.setState({ user });
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
@@ -33,6 +40,7 @@ class CreateProfile extends Component {
     e.preventDefault();
 
     const profileData = {
+      user: this.state.user._id,
       handle: this.state.handle,
       location: this.state.location,
       bio: this.state.bio,
@@ -56,7 +64,7 @@ class CreateProfile extends Component {
 
         <form onSubmit={this.onSubmit}>
           <TextFieldGroup
-            placeholder="* Profile Handle"
+            placeholder="Profile Handle"
             name="handle"
             value={this.state.handle}
             onChange={this.onChange}
@@ -67,28 +75,28 @@ class CreateProfile extends Component {
             name="location"
             value={this.state.location}
             onChange={this.onChange}
-            info="Where in the world you are located"
+            info="Where in the world you are located?"
           />
           <TextAreaFieldGroup
             placeholder="Short Bio"
             name="bio"
             value={this.state.bio}
             onChange={this.onChange}
-            info="Tell us a little about yourself"
+            info="Tell us a little about yourself!"
           />
           <TextFieldGroup
             placeholder="Instagram Username"
             name="instagramusername"
             value={this.state.instagramusername}
             onChange={this.onChange}
-            info="Add your insta username"
+            info="Add your insta username!"
           />
           <TextFieldGroup
             placeholder="Twitter Username"
             name="twittersername"
             value={this.state.twitterusername}
             onChange={this.onChange}
-            info="Add your twitter"
+            info="Add your twitter!"
           />
           <TextFieldGroup
             placeholder="Instagram Username"
@@ -102,7 +110,7 @@ class CreateProfile extends Component {
             name="linkedinusername"
             value={this.state.linkedinusername}
             onChange={this.onChange}
-            info="Add your LinkedIn"
+            info="Add your LinkedIn!"
           />
           <input
             type="submit"

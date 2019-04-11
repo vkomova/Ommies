@@ -1,13 +1,13 @@
-const isEmpty = value =>
-  value === undefined ||
-  value === null ||
-  (typeof value === "object" && Object.keys(value).length === 0) ||
-  (typeof value === "string" && value.trim().length === 0);
+// const isEmpty = value =>
+//   value === undefined ||
+//   value === null ||
+//   (typeof value === "object" && Object.keys(value).length === 0) ||
+//   (typeof value === "string" && value.trim().length === 0);
 
 const SET_CURRENT_USER = "SET_CURRENT_USER";
 
 const initialState = {
-  isAuthenticated: false,
+  // isAuthenticated: false,
   user: {}
 };
 
@@ -16,7 +16,7 @@ export default function(state = initialState, action) {
     case SET_CURRENT_USER:
       return {
         ...state,
-        isAuthenticated: !isEmpty(action.payload),
+        // isAuthenticated: !isEmpty(action.payload),
         user: action.payload
       };
     default:

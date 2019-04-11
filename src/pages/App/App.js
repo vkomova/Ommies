@@ -8,6 +8,7 @@ import CreateProfile from "../CreateProfile/CreateProfile";
 import userService from "../../utils/userService";
 import { Provider } from "react-redux";
 import store from "./store";
+// import { withRouter } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -23,6 +24,10 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({ user: userService.getUser() });
   };
+
+  // handleCreateProfile = () => {
+  //   this.setState({ user: userService.getUser() });
+  // };
 
   /*--- Lifecycle Methods ---*/
 
@@ -66,7 +71,13 @@ class App extends Component {
                 />
               )}
             />
-            <Route exact path="/profile" component={CreateProfile} />
+            <Route
+              exact
+              path="/profile"
+              render={({ history }) => (
+                <CreateProfile history={history} user={this.state.user} />
+              )}
+            />
           </Switch>
         </div>
       </Provider>
