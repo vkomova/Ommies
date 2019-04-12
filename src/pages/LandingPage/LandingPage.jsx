@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
+import Feed from "../../components/Feed/Feed";
 
 const LandingPage = props => {
   return (
@@ -19,9 +20,8 @@ const LandingPage = props => {
         and elevating your spirit with holistic methods.
       </p>
 
-      <footer className="header-footer">
-        Copyright &copy; {new Date().getFullYear()} Ommies by Valerie Komova
-      </footer>
+      <Feed />
+
     </div>
   );
 };

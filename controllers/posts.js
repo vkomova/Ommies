@@ -13,7 +13,7 @@ async function viewall(req, res) {
 }
 
 async function viewone(req, res) {
-  Post.findById(req.params.id)
+  Post.findById(req.params._id)
     .then(post => res.json(post))
     .catch(err =>
       res.status(404).json({ nopostfound: "No post found with that ID" })
@@ -23,17 +23,17 @@ async function viewone(req, res) {
 function create(req, res) {
   const newPost = new Post({
     text: req.body.text,
-    name: req.body.name,
-    user: req.user.id
+    // name: req.body.name,
+    user: req.body.user
   });
   newPost.save().then(post => res.json(post));
 }
 
 function deletepost(req, res) {
-  Profile.findOne({ user: req.user.id }).then(profile => {
-    Post.findById(req.params.id)
+  Profile.findOne({ user: req.user._id }).then(profile => {
+    Post.findById(req.params._id)
       .then(post => {
-        if (post.user.toString() !== req.user.id) {
+        if (post.user.toString() !== req.user._id) {
           return res
             .status(401)
             .json({ notauthorized: "User not authorized to delete post" });
@@ -45,18 +45,18 @@ function deletepost(req, res) {
 }
 
 function like(req, res) {
-  Profile.findOne({ user: req.user.id }).then(profile => {
-    Post.findById(req.params.id)
+  Profile.findOne({ user: req.user._id }).then(profile => {
+    Post.findById(req.params._id)
       .then(post => {
         if (
-          post.likes.filter(like => like.user.toString() === req.user.id)
+          post.likes.filter(like => like.user.toString() === req.user._id)
             .length > 0
         ) {
           return res
             .status(400)
             .json({ alreadyliked: "User already liked this post" });
         }
-        post.likes.unshift({ user: req.user.id });
+        post.likes.unshift({ user: req.user._id });
         post.save().then(post => res.json(post));
       })
       .catch(err => res.status(404).json({ postnotfound: "No post found" }));
@@ -64,11 +64,11 @@ function like(req, res) {
 }
 
 function unlike(req, res) {
-  Profile.findOne({ user: req.user.id }).then(profile => {
-    Post.findById(req.params.id)
+  Profile.findOne({ user: req.user._id }).then(profile => {
+    Post.findById(req.params._id)
       .then(post => {
         if (
-          post.likes.filter(like => like.user.toString() === req.user.id)
+          post.likes.filter(like => like.user.toString() === req.user._id)
             .length === 0
         ) {
           return res
@@ -77,7 +77,7 @@ function unlike(req, res) {
         }
         const removeIndex = post.likes
           .map(item => item.user.toString())
-          .indexOf(req.user.id);
+          .indexOf(req.user._id);
 
         post.likes.splice(removeIndex, 1);
 
@@ -88,12 +88,12 @@ function unlike(req, res) {
 }
 
 function comment(req, res) {
-  Post.findById(req.params.id)
+  Post.findById(req.params._id)
     .then(post => {
       const newComment = {
         text: req.body.text,
         name: req.body.name,
-        user: req.user.id
+        user: req.user._id
       };
 
       post.commments.unshift(newComment);
@@ -104,7 +104,7 @@ function comment(req, res) {
 }
 
 function deletecomment(req, res) {
-  Post.findById(req.params.id)
+  Post.findById(req.params._id)
     .then(post => {
       if (
         post.comments.filter(

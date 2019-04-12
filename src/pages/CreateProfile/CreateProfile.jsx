@@ -25,6 +25,7 @@ class CreateProfile extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+
   async componentDidMount() {
     const user = userService.getUser();
     this.setState({ user });
@@ -49,7 +50,6 @@ class CreateProfile extends Component {
       github: this.state.github,
       linkedin: this.state.linkedin
     };
-
     this.props.createProfile(profileData, this.props.history);
   }
 

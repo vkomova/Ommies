@@ -36,7 +36,7 @@ async function userviewprofile(req, res) {
 
 function view(req, res) {
   const errors = {};
-  Profile.findOne({ user: req.user.id })
+  Profile.findOne({ user: req.user._id })
     .populate("user", ["name"])
     .then(profile => {
       if (!profile) {
@@ -54,7 +54,7 @@ function createorupdate(req, res) {
     return res.status(400).json(errors);
   }
   const profileFields = {};
-  profileFields.user = req.user;
+  profileFields.user = req.body.user;
   if (req.body.handle) profileFields.handle = req.body.handle;
   if (req.body.location) profileFields.location = req.body.location;
   if (req.body.bio) profileFields.bio = req.body.bio;
@@ -63,12 +63,11 @@ function createorupdate(req, res) {
   if (req.body.github) profileFields.social.github = req.body.github;
   if (req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
   if (req.body.date) profileFields.date = req.body.date;
-  console.log(profileFields + "1");
 
-  Profile.findOne({ user: req.user }).then(profile => {
+  Profile.findOne({ user: profileFields.user }).then(profile => {
     if (profile) {
       Profile.findOneAndUpdate(
-        { user: req.user },
+        { user: profileFields.user },
         { $set: profileFields },
         { new: true }
       ).then(profile => res.json(profile));
@@ -76,7 +75,7 @@ function createorupdate(req, res) {
       Profile.findOne({ handle: profileFields.handle }).then(profile => {
         if (profile) {
           errors.handle = "That handle already exists";
-          res.status(400).json(errors);
+          return res.status(400).json(errors);
         }
         new Profile(profileFields).save().then(profile => res.json(profile));
       });
@@ -85,8 +84,8 @@ function createorupdate(req, res) {
 }
 
 function deleteUserandProfile(req, res) {
-  Profile.findOneAndRemove({ user: req.user.id }).then(() => {
-    User.findOneAndRemove({ _id: req.user.id }).then(() =>
+  Profile.findOneAndRemove({ user: req.user._id }).then(() => {
+    User.findOneAndRemove({ _id: req.user._id }).then(() =>
       res.json({ success: true })
     );
   });

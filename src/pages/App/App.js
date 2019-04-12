@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import LandingPage from "../LandingPage/LandingPage";
@@ -8,6 +8,7 @@ import CreateProfile from "../CreateProfile/CreateProfile";
 import userService from "../../utils/userService";
 import { Provider } from "react-redux";
 import store from "./store";
+// import Feed from "./Feed/Feed"
 // import { withRouter } from 'react-router-dom';
 
 class App extends Component {
@@ -74,11 +75,21 @@ class App extends Component {
             <Route
               exact
               path="/profile"
-              render={({ history }) => (
-                <CreateProfile history={history} user={this.state.user} />
-              )}
+              render={({ history }) =>
+                userService.getUser() ? (
+                  <CreateProfile history={history} user={this.state.user} />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
             />
           </Switch>
+          {/* <Switch>
+            <Route exact path="/feed" component={Feed} />
+          </Switch> */}
+          <footer className="header-footer">
+            Copyright &copy; {new Date().getFullYear()} Ommies by Valerie Komova
+          </footer>
         </div>
       </Provider>
     );
