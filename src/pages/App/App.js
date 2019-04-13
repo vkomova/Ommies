@@ -8,6 +8,7 @@ import CreateProfile from "../CreateProfile/CreateProfile";
 import userService from "../../utils/userService";
 import { Provider } from "react-redux";
 import store from "./store";
+import Posts from "../../../src/components/Posts/Posts";
 // import Feed from "./Feed/Feed"
 // import { withRouter } from 'react-router-dom';
 
@@ -82,6 +83,15 @@ class App extends Component {
                   <Redirect to="/login" />
                 )
               }
+            />
+            <Route
+              exact
+              path="/posts"
+              render={({ history }) => (
+                <Posts
+                  history={history}
+                />
+              )}
             />
           </Switch>
           {/* <Switch>

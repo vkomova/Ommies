@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const postsCtrl = require("../../controllers/posts");
 
 router.get("/test", postsCtrl.test);
-router.post("/", checkAuth, postsCtrl.create);
-router.get("/", postsCtrl.viewall);
+router.post("/", postsCtrl.create);
+router.get("/viewallposts", postsCtrl.viewall);
 router.get("/:id", postsCtrl.viewone);
 router.delete("/:id", checkAuth, postsCtrl.deletepost);
 router.post("/like/:id", checkAuth, postsCtrl.like);

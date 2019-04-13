@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import userService from "../../utils/userService";
 import "./Feed.css";
+import Posts from "../Posts/Posts";
+import { getPosts } from "../../utils/postService";
 
 class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
       text: "",
-      user: null
+      user: null,
+      posts: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -24,7 +27,7 @@ class Feed extends Component {
       text: this.state.text,
       user: this.state.user
     };
-    console.log(post);
+
     fetch("/api/posts", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -42,11 +45,14 @@ class Feed extends Component {
       .catch(function(err) {
         console.log(err);
       });
+    this.setState({ text: "" });
   }
 
   async componentDidMount() {
-    const user = userService.getUser();
-    this.setState({ user });
+    const currentuser = userService.getUser();
+    this.setState({
+      user: currentuser
+    });
   }
 
   render() {
@@ -74,20 +80,5 @@ class Feed extends Component {
     );
   }
 }
-
-// return fetch("/api/posts", {
-//   method: "POST",
-//   headers: { "Content-Type": "application/json" },
-//   body: resources
-// })
-//   .then(function(resources) {
-//     console.log(resources);
-//     if (resources === "success") {
-//       alert("Your valuable input was received");
-//     }
-//   })
-//   .catch(function(err) {
-//     console.log(err);
-//   });
 
 export default Feed;

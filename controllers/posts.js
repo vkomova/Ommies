@@ -5,11 +5,20 @@ async function test(req, res) {
   console.log("Posts work");
 }
 
+// async function viewall(req, res) {
+//   Post.find({}, function(err, posts) {
+//     res.json(posts);
+//   })
+//     .sort({ date: -1 })
+//     .then(posts => res.json(posts))
+//     .catch(err => res.status(404).json({ nopostsfound: "No posts found" }));
+// }
+
 async function viewall(req, res) {
-  Post.find()
-    .sort({ date: -1 })
-    .then(posts => res.json(posts))
-    .catch(err => res.status(404).json({ nopostsfound: "No posts found" }));
+  Post.find({}, function(err, post) {
+    console.log(post);
+    res.json(post);
+  });
 }
 
 async function viewone(req, res) {
