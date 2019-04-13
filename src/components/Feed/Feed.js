@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import userService from "../../utils/userService";
 import "./Feed.css";
-import Posts from "../Posts/Posts";
-import { getPosts } from "../../utils/postService";
 
 class Feed extends Component {
   constructor(props) {
@@ -45,6 +43,7 @@ class Feed extends Component {
       .catch(function(err) {
         console.log(err);
       });
+    this.props.history.push("/");
     this.setState({ text: "" });
   }
 

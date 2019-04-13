@@ -4,30 +4,43 @@ import postService from "../../utils/postService";
 import PostFeed from "./PostFeed";
 import axios from "axios";
 import NavBar from "../NavBar/NavBar";
+import userService from "../../utils/userService";
 
 class Posts extends Component {
   state = {
+    user: null,
     posts: []
   };
 
   async componentDidMount() {
     const posts = await postService.getPosts();
-    this.setState({ posts });
-    console.log(this.state);
-    console.log(posts);
+    this.setState({ posts: posts });
+    const currentuser = userService.getUser();
+    this.setState({
+      user: currentuser
+    });
   }
 
   render() {
-    console.log(this.state.posts);
-
     return (
       <>
-        <NavBar />
-        {this.state.posts ? (
-          this.state.posts.map(p => <p>{p.text}</p>)
+        {this.state.user ? (
+          <span>Welcome {this.state.user.name}</span>
         ) : (
-          <p>Loading...</p>
+          <span>Feed</span>
         )}
+        <br />
+        <br />
+        <div>
+          Current Feed:
+          {this.state.posts ? (
+            this.state.posts.map(p => <p>{p.text}</p>)
+          ) : (
+            <p>Loading...</p>
+          )}
+          <br />
+          <br />
+        </div>
       </>
     );
   }

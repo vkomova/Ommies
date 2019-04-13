@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import Feed from "../../components/Feed/Feed";
+import Posts from "../../components/Posts/Posts";
 
 const LandingPage = props => {
   return (
@@ -19,9 +20,9 @@ const LandingPage = props => {
         Create a profile and share helpful posts for dealing with everyday life
         and elevating your spirit with holistic methods.
       </p>
+      <br />
 
-      <Feed />
-
+      <Posts {...props.history} />
     </div>
   );
 };

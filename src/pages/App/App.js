@@ -9,6 +9,7 @@ import userService from "../../utils/userService";
 import { Provider } from "react-redux";
 import store from "./store";
 import Posts from "../../../src/components/Posts/Posts";
+import Feed from "../../../src/components/Feed/Feed";
 // import Feed from "./Feed/Feed"
 // import { withRouter } from 'react-router-dom';
 
@@ -45,10 +46,11 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={() => (
+            render={({ history }) => (
               <LandingPage
                 handleLogout={this.handleLogout}
                 user={this.state.user}
+                history={history}
               />
             )}
           />
@@ -87,16 +89,9 @@ class App extends Component {
             <Route
               exact
               path="/posts"
-              render={({ history }) => (
-                <Posts
-                  history={history}
-                />
-              )}
+              render={({ history }) => <Feed history={history} />}
             />
           </Switch>
-          {/* <Switch>
-            <Route exact path="/feed" component={Feed} />
-          </Switch> */}
           <footer className="header-footer">
             Copyright &copy; {new Date().getFullYear()} Ommies by Valerie Komova
           </footer>

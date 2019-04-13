@@ -5,11 +5,11 @@ import "./NavBar.css";
 const NavBar = props => {
   let nav = props.user ? (
     <div>
-      <Link to="/posts" className="NavBar-link" >
-        FEED
+      <Link to="/posts" className="NavBar-link">
+        ADD POST
       </Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-      <Link to="/profile" className="NavBar-link" >
+      <Link to="/profile" className="NavBar-link">
         PROFILE
       </Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
