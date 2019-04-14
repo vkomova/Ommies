@@ -13,6 +13,16 @@ function getPosts() {
   });
 }
 
+function deletePost(post) {
+  const options = {
+    method: "POST",
+    headers: new Headers({ "Content-Type": "application/json" }),
+    body: JSON.stringify(post)
+  };
+  return fetch(BASE_URL + "/deletepost", options).then(res => res.json());
+}
+
 export default {
-  getPosts
+  getPosts,
+  deletePost
 };

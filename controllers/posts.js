@@ -5,18 +5,8 @@ async function test(req, res) {
   console.log("Posts work");
 }
 
-// async function viewall(req, res) {
-//   Post.find({}, function(err, posts) {
-//     res.json(posts);
-//   })
-//     .sort({ date: -1 })
-//     .then(posts => res.json(posts))
-//     .catch(err => res.status(404).json({ nopostsfound: "No posts found" }));
-// }
-
 async function viewall(req, res) {
   Post.find({}, function(err, post) {
-    console.log(post);
     res.json(post);
   });
 }
@@ -28,7 +18,6 @@ async function viewone(req, res) {
       res.status(404).json({ nopostfound: "No post found with that ID" })
     );
 }
-
 function create(req, res) {
   const newPost = new Post({
     text: req.body.text,
@@ -38,19 +27,12 @@ function create(req, res) {
   newPost.save().then(post => res.json(post));
 }
 
-function deletepost(req, res) {
-  Profile.findOne({ user: req.user._id }).then(profile => {
-    Post.findById(req.params._id)
-      .then(post => {
-        if (post.user.toString() !== req.user._id) {
-          return res
-            .status(401)
-            .json({ notauthorized: "User not authorized to delete post" });
-        }
-        post.remove().then(() => res.json({ success: true }));
-      })
-      .catch(err => res.status(404).json({ postnotfound: "No post found" }));
-  });
+function deletePost(req, res) {
+  Post.findById({_id: req.body._id}, function(err, post){
+    console.log(post)
+    post.remove();
+    post.save();
+  })
 }
 
 function like(req, res) {
@@ -136,10 +118,10 @@ function deletecomment(req, res) {
 
 module.exports = {
   test,
+  deletePost,
   create,
   viewall,
   viewone,
-  deletepost,
   like,
   unlike,
   comment,

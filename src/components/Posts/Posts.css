@@ -1,0 +1,10 @@
+.Mainfeed {
+  padding-top: 10px;
+  border-style: inset;
+  border-color: coral;
+  border-width: 7px;
+  border-radius: 25px;
+  margin: 0 25% 0 25%;
+  width: 50%;
+  height: 50%;
+}
