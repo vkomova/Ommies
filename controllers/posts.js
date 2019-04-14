@@ -6,9 +6,12 @@ async function test(req, res) {
 }
 
 async function viewall(req, res) {
-  Post.find({}, function(err, post) {
-    res.json(post);
-  });
+  // Post.find({}, function(err, post) {
+  //   res.json(post);
+
+  // });
+  const post = await Post.find({}).sort({ createdAt: -1 });
+  res.json(post);
 }
 
 async function viewone(req, res) {
@@ -21,18 +24,17 @@ async function viewone(req, res) {
 function create(req, res) {
   const newPost = new Post({
     text: req.body.text,
-    // name: req.body.name,
     user: req.body.user
   });
   newPost.save().then(post => res.json(post));
 }
 
 function deletePost(req, res) {
-  Post.findById({_id: req.body._id}, function(err, post){
-    console.log(post)
+  Post.findById({ _id: req.body._id }, function(err, post) {
+    console.log(post);
     post.remove();
     post.save();
-  })
+  });
 }
 
 function like(req, res) {
