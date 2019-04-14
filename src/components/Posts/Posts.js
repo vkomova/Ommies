@@ -41,10 +41,11 @@ class Posts extends Component {
         <br />
         <br />
         <div className="Mainfeed">
-          Current Feed:
+          Current Feed: <br />
+          <br />
           {this.state.posts && this.state.user ? (
             this.state.posts.map((p, i) => (
-              <div key={`post ${i}`}>
+              <div className="Post" key={`post ${i}`}>
                 <p key={`text ${i}`}>{p.text}</p>
                 {p.user === this.state.user._id ? (
                   <button onClick={() => this.handleDeletePost(p)}>
@@ -56,7 +57,15 @@ class Posts extends Component {
               </div>
             ))
           ) : (
-            <p>Loading...</p>
+            <p>No posts yet</p>
+          )}
+          {this.state.posts.length < 1 ? (
+            <p>
+              No posts yet :/
+              <br />
+            </p>
+          ) : (
+            <p />
           )}
         </div>
       </>

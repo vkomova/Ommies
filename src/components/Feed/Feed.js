@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import userService from "../../utils/userService";
+import postService from "../../utils/postService";
 import "./Feed.css";
 
 class Feed extends Component {
@@ -25,24 +26,7 @@ class Feed extends Component {
       text: this.state.text,
       user: this.state.user
     };
-
-    fetch("/api/posts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(post)
-    })
-      .then(function(response) {
-        if (response.status >= 400) {
-          throw new Error("Bad response from server");
-        }
-        return response.json();
-      })
-      .then(function(post) {
-        console.log("success");
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
+    postService.submitPost(post);
     this.props.history.push("/");
     this.setState({ text: "" });
   }

@@ -8,3 +8,7 @@
   width: 50%;
   height: 50%;
 }
+
+.Post {
+  border-top: 4px dotted #008080;
+}
