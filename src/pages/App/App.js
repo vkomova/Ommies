@@ -26,10 +26,6 @@ class App extends Component {
     this.setState({ user: userService.getUser() });
   };
 
-  // handleCreateProfile = () => {
-  //   this.setState({ user: userService.getUser() });
-  // };
-
   /*--- Lifecycle Methods ---*/
 
   async componentDidMount() {

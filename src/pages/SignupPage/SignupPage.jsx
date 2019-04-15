@@ -1,25 +1,29 @@
-import React, { Component } from 'react';
-import SignupForm from '../../components/SignupForm/SignupForm';
-import './SignupPage.css';
+import React, { Component } from "react";
+import SignupForm from "../../components/SignupForm/SignupForm";
+import "./SignupPage.css";
 
 class SignupPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {message: ''}
+    this.state = { message: "" };
   }
 
-  updateMessage = (msg) => {
-    this.setState({message: msg});
-  }
+  updateMessage = msg => {
+    this.setState({ message: msg });
+  };
 
   render() {
     return (
-      <div className='SignupPage'>
-        <SignupForm {...this.props} updateMessage={this.updateMessage} />
-        <p>{this.state.message}</p>
+      <div className="Display">
+        <div className="SignupPage">
+          <span>Sign Up:</span>
+          <br />
+          <SignupForm {...this.props} updateMessage={this.updateMessage} />
+          <p>{this.state.message}</p>
+        </div>
       </div>
     );
   }
-};
+}
 
 export default SignupPage;

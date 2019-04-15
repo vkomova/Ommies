@@ -3,5 +3,12 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
+  padding: 25px 0 0 0;
+  border-style: inset;
+  border-color: coral;
+  border-width: 7px;
+  border-radius: 25px;
+  margin-top: 50px;
+  width: 25%;
+  height: 50%;
 }
