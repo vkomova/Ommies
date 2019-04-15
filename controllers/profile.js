@@ -3,37 +3,6 @@ const User = require("../models/user");
 
 const validateProfileInput = require("../validation/profile");
 
-// async function test(req, res) {
-//   console.log("Profile works");
-// }
-
-async function handleviewprofile(req, res) {
-  const errors = {};
-  Profile.findOne({ handle: req.params.handle })
-    .then(profile => {
-      if (!profile) {
-        errors.noprofile = "There is no profile created for this user";
-        res.status(404).json(errors);
-      }
-      res.json(profile);
-    })
-    .catch(err => res.status(404).json(err));
-}
-
-async function userviewprofile(req, res) {
-  const errors = {};
-  console.log(req.params.user_id);
-  Profile.findOne({ user: req.params.user_id })
-    .then(profile => {
-      if (!profile) {
-        errors.noprofile = "There is no profile created for this user";
-        res.status(404).json(errors);
-      }
-      res.json(profile);
-    })
-    .catch(err => res.status(404).json(err));
-}
-
 function view(req, res) {
   const errors = {};
   Profile.findOne({ user: req.user._id })
@@ -94,7 +63,5 @@ function deleteUserandProfile(req, res) {
 module.exports = {
   view,
   createorupdate,
-  handleviewprofile,
-  userviewprofile,
   deleteUserandProfile
 };

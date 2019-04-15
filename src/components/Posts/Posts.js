@@ -57,11 +57,11 @@ class Posts extends Component {
               </div>
             ))
           ) : (
-            <p>No posts yet</p>
+            <p>Please login to see posts.</p>
           )}
           {this.state.posts.length < 1 ? (
             <p>
-              No posts yet :/
+              No posts avaialble.
               <br />
             </p>
           ) : (
