@@ -8,10 +8,8 @@ import CreateProfile from "../CreateProfile/CreateProfile";
 import userService from "../../utils/userService";
 import { Provider } from "react-redux";
 import store from "./store";
-import Posts from "../../../src/components/Posts/Posts";
 import Feed from "../../../src/components/Feed/Feed";
-// import Feed from "./Feed/Feed"
-// import { withRouter } from 'react-router-dom';
+import ViewProfile from "../ViewProfile/ViewProfile";
 
 class App extends Component {
   constructor() {
@@ -85,6 +83,17 @@ class App extends Component {
               render={({ history }) =>
                 userService.getUser() ? (
                   <CreateProfile history={history} user={this.state.user} />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
+            />
+            <Route
+              exact
+              path="/viewprofile"
+              render={({ history }) =>
+                userService.getUser() ? (
+                  <ViewProfile history={history} user={this.state.user} />
                 ) : (
                   <Redirect to="/login" />
                 )

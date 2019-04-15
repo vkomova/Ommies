@@ -6,6 +6,8 @@ import TextFieldGroup from "../../components/TextFieldGroup/TextFieldGroup";
 import TextAreaFieldGroup from "../../components/TextAreaFieldGroup/TextAreaFieldGroup";
 import { createProfile } from "../../utils/profileService";
 import userService from "../../utils/userService";
+import { Link } from "react-router-dom";
+import "./CreateProfile.css";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -24,7 +26,6 @@ class CreateProfile extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
 
   async componentDidMount() {
     const user = userService.getUser();
@@ -51,6 +52,7 @@ class CreateProfile extends Component {
       linkedin: this.state.linkedin
     };
     this.props.createProfile(profileData, this.props.history);
+    this.props.history.push("/");
   }
 
   onChange(e) {
@@ -59,66 +61,91 @@ class CreateProfile extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Manage Your Profile</h1>
+      <>
+        {this.state.user ? (
+          <div>
+            <Link to="/" className="NavBar-link">
+              HOME
+            </Link>
+            &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            <Link to="/posts" className="NavBar-link">
+              ADD POST
+            </Link>
+            &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            <Link to="/profile" className="NavBar-link">
+              MANAGE PROFILE
+            </Link>
+            &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+            <span className="NavBar-welcome">
+              🌿Welcome {this.state.user.name} 🌿
+            </span>
+          </div>
+        ) : (
+          <span> </span>
+        )}
+        <br />
+        <br />
+        <div className="Profile">
+          <h1>Manage Your Profile</h1>
 
-        <form onSubmit={this.onSubmit}>
-          <TextFieldGroup
-            placeholder="Profile Handle"
-            name="handle"
-            value={this.state.handle}
-            onChange={this.onChange}
-            info="A unique handle for your profile URL."
-          />
-          <TextFieldGroup
-            placeholder="Location"
-            name="location"
-            value={this.state.location}
-            onChange={this.onChange}
-            info="Where in the world you are located?"
-          />
-          <TextAreaFieldGroup
-            placeholder="Short Bio"
-            name="bio"
-            value={this.state.bio}
-            onChange={this.onChange}
-            info="Tell us a little about yourself!"
-          />
-          <TextFieldGroup
-            placeholder="Instagram Username"
-            name="instagramusername"
-            value={this.state.instagramusername}
-            onChange={this.onChange}
-            info="Add your insta username!"
-          />
-          <TextFieldGroup
-            placeholder="Twitter Username"
-            name="twittersername"
-            value={this.state.twitterusername}
-            onChange={this.onChange}
-            info="Add your twitter!"
-          />
-          <TextFieldGroup
-            placeholder="Instagram Username"
-            name="githubusername"
-            value={this.state.githubusername}
-            onChange={this.onChange}
-            info="Add your Github and show us your work!"
-          />
-          <TextFieldGroup
-            placeholder="LinkedIn Username"
-            name="linkedinusername"
-            value={this.state.linkedinusername}
-            onChange={this.onChange}
-            info="Add your LinkedIn!"
-          />
-          <input
-            type="submit"
-            value="Submit"
-            className="btn btn-info btn-block mt-4"
-          />
-        </form>
-      </div>
+          <form onSubmit={this.onSubmit}>
+            <TextFieldGroup
+              placeholder="Profile Handle"
+              name="handle"
+              value={this.state.handle}
+              onChange={this.onChange}
+              info="A unique handle for your profile URL."
+            />
+            <TextFieldGroup
+              placeholder="Location"
+              name="location"
+              value={this.state.location}
+              onChange={this.onChange}
+              info="Where in the world you are located?"
+            />
+            <TextAreaFieldGroup
+              placeholder="Short Bio"
+              name="bio"
+              value={this.state.bio}
+              onChange={this.onChange}
+              info="Tell us a little about yourself!"
+            />
+            <TextFieldGroup
+              placeholder="Instagram Username"
+              name="instagramusername"
+              value={this.state.instagramusername}
+              onChange={this.onChange}
+              info="Add your insta username!"
+            />
+            <TextFieldGroup
+              placeholder="Twitter Username"
+              name="twittersername"
+              value={this.state.twitterusername}
+              onChange={this.onChange}
+              info="Add your twitter!"
+            />
+            <TextFieldGroup
+              placeholder="Instagram Username"
+              name="githubusername"
+              value={this.state.githubusername}
+              onChange={this.onChange}
+              info="Add your Github and show us your work!"
+            />
+            <TextFieldGroup
+              placeholder="LinkedIn Username"
+              name="linkedinusername"
+              value={this.state.linkedinusername}
+              onChange={this.onChange}
+              info="Add your LinkedIn!"
+            />
+            <input
+              type="submit"
+              value="Submit"
+              className="btn btn-info btn-block mt-4"
+            />
+          </form>
+        </div>
+      </>
     );
   }
 }

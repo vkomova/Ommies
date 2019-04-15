@@ -9,8 +9,12 @@ const NavBar = props => {
         ADD POST
       </Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <Link to="/viewprofile" className="NavBar-link">
+        VIEW PROFILE
+      </Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <Link to="/profile" className="NavBar-link">
-        PROFILE
+        MANAGE PROFILE
       </Link>
       &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
       <Link to="" className="NavBar-link" onClick={props.handleLogout}>

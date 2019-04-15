@@ -1,5 +1,5 @@
-.Mainfeed {
-  padding-top: 25px;
+.Profile {
+  padding-bottom: 25px;
   border-style: inset;
   border-color: coral;
   border-width: 7px;
@@ -7,9 +7,4 @@
   margin: 0 25% 0 25%;
   width: 50%;
   height: 50%;
-}
-
-.Post {
-  border-top: 4px dotted #008080;
-  padding-bottom: 10px;
 }

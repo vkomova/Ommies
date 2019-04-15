@@ -3,10 +3,9 @@ const User = require("../models/user");
 
 const validateProfileInput = require("../validation/profile");
 
-function view(req, res) {
+async function view(req, res) {
   const errors = {};
   Profile.findOne({ user: req.user._id })
-    .populate("user", ["name"])
     .then(profile => {
       if (!profile) {
         errors.noprofile = "There is no profile created for this user";
@@ -16,6 +15,11 @@ function view(req, res) {
     })
     .catch(err => res.status(404).json(err));
 }
+
+// async function view(req, res) {
+//   const profile = await Profile.findOne({ user: req.user._id });
+//   await res.json(profile);
+// }
 
 function createorupdate(req, res) {
   const { errors, isValid } = validateProfileInput(req.body);

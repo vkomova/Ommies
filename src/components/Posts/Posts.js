@@ -34,7 +34,7 @@ class Posts extends Component {
     return (
       <>
         {this.state.user ? (
-          <span>Welcome {this.state.user.name}</span>
+          <span>🌿Welcome {this.state.user.name} 🌿</span>
         ) : (
           <span>Feed</span>
         )}

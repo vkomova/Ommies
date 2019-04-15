@@ -16,7 +16,6 @@ function create(req, res) {
 
 function deletePost(req, res) {
   Post.findById({ _id: req.body._id }, function(err, post) {
-    console.log(post);
     post.remove();
     post.save();
   });
