@@ -47,24 +47,37 @@ class ViewProfile extends Component {
         <br />
         <br />
         <div className="Mainfeed">
-          Current Profile: <br />
-          <br />
+          <h3>Current Profile:</h3>
           {this.state.profile ? (
             <div>
-              <span>Handle: {this.state.profile.handle}</span>
-              <br />
-              <span>Location: {this.state.profile.location}</span>
-              <br />
-              <span>Bio: {this.state.profile.bio}</span>
-              <br />
+              {this.state.profile.handle ? (
+                <>
+                  <p>Handle: {this.state.profile.handle}</p>
+                </>
+              ) : (
+                <p>No handle entered.</p>
+              )}
+              {this.state.profile.location ? (
+                <>
+                  <p>Location: {this.state.profile.location}</p>
+                </>
+              ) : (
+                <p>No location entered.</p>
+              )}
+              {this.state.profile.bio ? (
+                <>
+                  <p>Bio: {this.state.profile.bio}</p>
+                </>
+              ) : (
+                <p>No bio entered.</p>
+              )}
 
               {this.state.profile.social ? (
                 <>
-                  <span>Social: {this.state.profile.social}</span>
-                  <br />
+                  <p>Social: {this.state.profile.social}</p>
                 </>
               ) : (
-                <span> </span>
+                <p>No social media entered.</p>
               )}
               <br />
               <br />

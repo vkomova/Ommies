@@ -71,9 +71,8 @@ class Feed extends Component {
             <label>
               <br />
               <br />
-              Recource:
-              <br />
-              <br />
+              <h3>Recource:</h3>
+
               <textarea
                 name="text"
                 value={this.state.text}

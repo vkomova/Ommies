@@ -38,11 +38,8 @@ class Posts extends Component {
         ) : (
           <span>Feed</span>
         )}
-        <br />
-        <br />
         <div className="Mainfeed">
-          Current Feed: <br />
-          <br />
+          <h4>Current Feed:</h4>
           {this.state.posts && this.state.user ? (
             this.state.posts.map((p, i) => (
               <div className="Post" key={`post ${i}`}>

@@ -88,7 +88,7 @@ class CreateProfile extends Component {
         <br />
         <br />
         <div className="Profile">
-          <h1>Manage Your Profile</h1>
+          <h3>Manage Your Profile</h3>
 
           <form onSubmit={this.onSubmit}>
             <TextFieldGroup

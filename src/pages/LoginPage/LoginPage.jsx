@@ -31,8 +31,7 @@ class LoginPage extends Component {
     return (
       <div className="Display">
         <div className="LoginPage">
-          <span>Log In:</span>
-          <br />
+          <h3>Log In:</h3>
           <form className="form-horizontal" onSubmit={this.handleSubmit}>
             <div className="form-group">
               <div className="col-sm-12">
