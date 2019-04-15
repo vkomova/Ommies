@@ -6,7 +6,9 @@ import TextFieldGroup from "../../components/TextFieldGroup/TextFieldGroup";
 import TextAreaFieldGroup from "../../components/TextAreaFieldGroup/TextAreaFieldGroup";
 import { createProfile } from "../../utils/profileService";
 import userService from "../../utils/userService";
+import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
+
 import "./CreateProfile.css";
 
 class CreateProfile extends Component {
@@ -145,6 +147,7 @@ class CreateProfile extends Component {
             />
           </form>
         </div>
+        <Footer />
       </>
     );
   }

@@ -107,9 +107,6 @@ class App extends Component {
               }
             />
           </Switch>
-          <footer className="header-footer">
-            Copyright &copy; {new Date().getFullYear()} Ommies by Valerie Komova
-          </footer>
         </div>
       </Provider>
     );

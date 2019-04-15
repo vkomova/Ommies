@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import postService from "../../utils/postService";
 import axios from "axios";
-import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
 import userService from "../../utils/userService";
 import "./Posts.css";
 
@@ -68,6 +68,9 @@ class Posts extends Component {
             <p />
           )}
         </div>
+        <footer className="Postfooter">
+          Copyright &copy; {new Date().getFullYear()} Ommies by Valerie Komova
+        </footer>
       </>
     );
   }

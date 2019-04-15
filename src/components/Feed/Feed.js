@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import userService from "../../utils/userService";
 import postService from "../../utils/postService";
+import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
 import "./Feed.css";
 
@@ -89,6 +90,7 @@ class Feed extends Component {
             </Link>
           </form>
         </div>
+        <Footer />
       </>
     );
   }

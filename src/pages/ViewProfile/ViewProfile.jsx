@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import userService from "../../utils/userService";
 import profileService from "../../utils/profileService";
 import { Link } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 
 class ViewProfile extends Component {
   state = {
@@ -71,25 +72,8 @@ class ViewProfile extends Component {
           ) : (
             <span> </span>
           )}
-          {/* {this.state.profile && this.state.user ? (
-            this.state.profile.map((p, i) => (
-              <div key={`post ${i}`}>
-                <span>{p.user}</span>
-                <br />
-                <span>{p.handle}</span>
-                <br />
-                <span>{p.location}</span>
-                <br />
-                <span>{p.bio}</span>
-                <br />
-                <span>{p.social}</span>
-                <br />
-              </div>
-            ))
-          ) : (
-            <p> </p>
-          )} */}
         </div>
+        <Footer />
       </>
     );
   }
