@@ -46,13 +46,17 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={({ history }) => (
-              <LandingPage
-                handleLogout={this.handleLogout}
-                user={this.state.user}
-                history={history}
-              />
-            )}
+            render={({ history }) =>
+              userService.getUser() ? (
+                <LandingPage
+                  handleLogout={this.handleLogout}
+                  user={this.state.user}
+                  history={history}
+                />
+              ) : (
+                <Redirect to="/login" />
+              )
+            }
           />
           <Switch>
             <Route
@@ -89,7 +93,13 @@ class App extends Component {
             <Route
               exact
               path="/posts"
-              render={({ history }) => <Feed history={history} />}
+              render={({ history }) =>
+                userService.getUser() ? (
+                  <Feed history={history} />
+                ) : (
+                  <Redirect to="/login" />
+                )
+              }
             />
           </Switch>
           <footer className="header-footer">
