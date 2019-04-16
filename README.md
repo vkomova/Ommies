@@ -1,4 +1,4 @@
-# drinkOn Web App
+# Ommies Web App
 by Valerie Komova for General Assembly Project 4  
 Click [here](https://ommies.herokuapp.com/) to try it out!
 
