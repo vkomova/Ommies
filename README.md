@@ -23,6 +23,7 @@ Ommies is a social media app where users can sign up, login, and create a profil
 * CSS3
 * JavaScript
 * mongoDB Atlas
+* JWT (JSON Web Token)
 * VS Code
 * Heroku
 * Chrome Dev Tools
