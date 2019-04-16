@@ -9,6 +9,7 @@
 
 .Postfield {
   padding-bottom: 50px;
+  padding-top: -10px;
   border-style: inset;
   border-color: coral;
   border-width: 7px;
@@ -23,6 +24,6 @@
   height: 120px;
   border: 3px solid #cccccc;
   padding: 5px;
-  font-family: Tahoma, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
 }

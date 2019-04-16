@@ -34,7 +34,6 @@ function createorupdate(req, res) {
 
   Profile.findOne({ user: profileFields.user }).then(profile => {
     if (profile) {
-      console.log(profileFields);
       Profile.findOneAndUpdate(
         { user: profileFields.user },
         { $set: profileFields },

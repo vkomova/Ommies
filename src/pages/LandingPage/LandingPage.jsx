@@ -19,7 +19,6 @@ const LandingPage = props => {
         Create a profile and share helpful posts for dealing with everyday life
         and elevating your spirit with holistic methods.
       </p>
-      <br />
 
       <Posts {...props.history} />
     </div>
