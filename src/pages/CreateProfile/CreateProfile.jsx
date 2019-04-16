@@ -24,7 +24,6 @@ class CreateProfile extends Component {
       github: "",
       linkedin: ""
     };
-
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -65,7 +64,7 @@ class CreateProfile extends Component {
     return (
       <>
         {this.state.user ? (
-          <div>
+          <div className="NavBar">
             <Link to="/" className="NavBar-link">
               HOME
             </Link>
@@ -114,29 +113,29 @@ class CreateProfile extends Component {
             />
             <TextFieldGroup
               placeholder="Instagram Username"
-              name="instagramusername"
-              value={this.state.instagramusername}
+              name="instagram"
+              value={this.state.instagram}
               onChange={this.onChange}
               info="Add your insta username!"
             />
             <TextFieldGroup
               placeholder="Twitter Username"
-              name="twittersername"
-              value={this.state.twitterusername}
+              name="twitter"
+              value={this.state.twitter}
               onChange={this.onChange}
               info="Add your twitter!"
             />
             <TextFieldGroup
-              placeholder="Instagram Username"
-              name="githubusername"
-              value={this.state.githubusername}
+              placeholder="Github Username"
+              name="github"
+              value={this.state.github}
               onChange={this.onChange}
               info="Add your Github and show us your work!"
             />
             <TextFieldGroup
               placeholder="LinkedIn Username"
-              name="linkedinusername"
-              value={this.state.linkedinusername}
+              name="linkedin"
+              value={this.state.linkedin}
               onChange={this.onChange}
               info="Add your LinkedIn!"
             />
@@ -165,5 +164,3 @@ export default connect(
   mapStateToProps,
   { createProfile }
 )(withRouter(CreateProfile));
-
-// export default CreateProfile;

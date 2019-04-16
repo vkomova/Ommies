@@ -32,39 +32,33 @@ class LoginPage extends Component {
       <div className="Display">
         <div className="LoginPage">
           <h3>Log In:</h3>
-          <form className="form-horizontal" onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <div className="col-sm-12">
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Email"
-                  value={this.state.email}
-                  name="email"
-                  onChange={this.handleChange}
-                />
-              </div>
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Email"
+                value={this.state.email}
+                name="email"
+                onChange={this.handleChange}
+              />
             </div>
             <div className="form-group">
-              <div className="col-sm-12">
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Password"
-                  value={this.state.pw}
-                  name="pw"
-                  onChange={this.handleChange}
-                />
-              </div>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Password"
+                value={this.state.pw}
+                name="pw"
+                onChange={this.handleChange}
+              />
             </div>
             <div className="form-group">
-              <div className="col-sm-12 text-center">
-                <button className="btn btn-default">Log In</button>
-                &nbsp;&nbsp; or
-                <Link to="/signup" className="NavBar-link">
-                  Sign Up
-                </Link>
-              </div>
+              <button>Log In</button>
+              &nbsp;&nbsp; or
+              <Link to="/signup" className="NavBar-link">
+                Sign Up
+              </Link>
             </div>
           </form>
         </div>

@@ -17,19 +17,17 @@ const profileSchema = new mongoose.Schema({
   bio: {
     type: String
   },
-  social: {
-    instagram: {
-      type: String
-    },
-    twitter: {
-      type: String
-    },
-    github: {
-      type: String
-    },
-    linkedin: {
-      type: String
-    }
+  instagram: {
+    type: String
+  },
+  twitter: {
+    type: String
+  },
+  github: {
+    type: String
+  },
+  linkedin: {
+    type: String
   },
   date: {
     type: Date,

@@ -44,7 +44,7 @@ class Feed extends Component {
     return (
       <>
         {this.state.user ? (
-          <div>
+          <div className="NavBar">
             <Link to="/" className="NavBar-link">
               HOME
             </Link>
@@ -74,6 +74,7 @@ class Feed extends Component {
               <h3>Recource:</h3>
 
               <textarea
+                className="Text"
                 name="text"
                 value={this.state.text}
                 placeholder="Add your tips and tricks for holistic health"

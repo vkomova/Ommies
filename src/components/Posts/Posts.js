@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import postService from "../../utils/postService";
-import axios from "axios";
-import Footer from "../Footer/Footer";
 import userService from "../../utils/userService";
 import "./Posts.css";
 
@@ -34,7 +31,7 @@ class Posts extends Component {
     return (
       <>
         {this.state.user ? (
-          <span>🌿Welcome {this.state.user.name} 🌿</span>
+          <p>🌿Welcome {this.state.user.name} 🌿</p>
         ) : (
           <span>Feed</span>
         )}

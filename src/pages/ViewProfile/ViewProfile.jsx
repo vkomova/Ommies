@@ -12,7 +12,6 @@ class ViewProfile extends Component {
 
   async componentDidMount() {
     const currentprofile = await profileService.getProfile();
-    console.log(currentprofile);
     const currentuser = await userService.getUser();
     this.setState({
       user: currentuser,
@@ -24,7 +23,7 @@ class ViewProfile extends Component {
     return (
       <>
         {this.state.user ? (
-          <div>
+          <div className="NavBar">
             <Link to="/" className="NavBar-link">
               HOME
             </Link>
@@ -71,15 +70,34 @@ class ViewProfile extends Component {
               ) : (
                 <p>No bio entered.</p>
               )}
-
-              {this.state.profile.social ? (
+              {this.state.profile.instagram ? (
                 <>
-                  <p>Social: {this.state.profile.social}</p>
+                  <p>Social: {this.state.profile.instagram}</p>
                 </>
               ) : (
-                <p>No social media entered.</p>
+                <p>No Instagram info entered.</p>
               )}
-              <br />
+              {this.state.profile.twitter ? (
+                <>
+                  <p>Social: {this.state.profile.twitter}</p>
+                </>
+              ) : (
+                <p>No Twitter info entered.</p>
+              )}
+              {this.state.profile.github ? (
+                <>
+                  <p>Social: {this.state.profile.githu}</p>
+                </>
+              ) : (
+                <p>No GitHub info entered.</p>
+              )}
+              {this.state.profile.linkedin ? (
+                <>
+                  <p>Social: {this.state.profile.linkedin}</p>
+                </>
+              ) : (
+                <p>No LinkedIn info entered.</p>
+              )}
               <br />
             </div>
           ) : (

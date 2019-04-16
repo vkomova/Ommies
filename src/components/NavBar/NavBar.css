@@ -1,7 +1,10 @@
 .NavBar {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0 0 20px;
+  background-image: linear-gradient(coral, white);
+  height: 50px;
 }
 
 .NavBar-link {
@@ -9,5 +12,5 @@
 }
 
 .NavBar-welcome {
-  color: grey;
+  color: black;
 }

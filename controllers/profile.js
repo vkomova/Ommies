@@ -16,11 +16,6 @@ async function view(req, res) {
     .catch(err => res.status(404).json(err));
 }
 
-// async function view(req, res) {
-//   const profile = await Profile.findOne({ user: req.user._id });
-//   await res.json(profile);
-// }
-
 function createorupdate(req, res) {
   const { errors, isValid } = validateProfileInput(req.body);
   if (!isValid) {
@@ -31,14 +26,15 @@ function createorupdate(req, res) {
   if (req.body.handle) profileFields.handle = req.body.handle;
   if (req.body.location) profileFields.location = req.body.location;
   if (req.body.bio) profileFields.bio = req.body.bio;
-  if (req.body.instagram) profileFields.social.instagram = req.body.instagram;
-  if (req.body.twitter) profileFields.social.twitter = req.body.twitter;
-  if (req.body.github) profileFields.social.github = req.body.github;
-  if (req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
+  if (req.body.instagram) profileFields.instagram = req.body.instagram;
+  if (req.body.twitter) profileFields.twitter = req.body.twitter;
+  if (req.body.github) profileFields.github = req.body.github;
+  if (req.body.linkedin) profileFields.linkedin = req.body.linkedin;
   if (req.body.date) profileFields.date = req.body.date;
 
   Profile.findOne({ user: profileFields.user }).then(profile => {
     if (profile) {
+      console.log(profileFields);
       Profile.findOneAndUpdate(
         { user: profileFields.user },
         { $set: profileFields },
