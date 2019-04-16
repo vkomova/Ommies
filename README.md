@@ -12,9 +12,9 @@ Ommies is a social media app where users can sign up, login, and create a profil
 ## Screenshots
 ![Landing Page](https://i.imgur.com/1I3iKZ0.png)  
 
-![Add Post Page](https://i.imgur.com/hpH7u6w.png)  
+![Add Post Page](https://i.imgur.com/Zo3Dmbx.png)  
 
-![Manage Profile Page](https://i.imgur.com/5rICUA5.png)
+![Manage Profile Page](https://i.imgur.com/zAl7LPG.png)
 
 
 ## Technologies Used
