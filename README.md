@@ -1,4 +1,4 @@
-# drinkOn Web App
+# Ommies Web App
 by Valerie Komova for General Assembly Project 4  
 Click [here](https://ommies.herokuapp.com/) to try it out!
 
@@ -10,11 +10,11 @@ Ommies is a social media app where users can sign up, login, and create a profil
 
 
 ## Screenshots
-![Home Page]()  
+![Landing Page](https://i.imgur.com/1I3iKZ0.png)  
 
-![Search Page]()  
+![Add Post Page](https://i.imgur.com/Zo3Dmbx.png)  
 
-![Results Page]()
+![Manage Profile Page](https://i.imgur.com/zAl7LPG.png)
 
 
 ## Technologies Used
@@ -34,4 +34,5 @@ Please visit https://ommies.herokuapp.com to try out my app!
 
 
 ## Next Steps
-For next steps, I would like to add the option to like and comment on posts. In addition, I would like to have a feature where users can favorite posts. Lastly, I would like to have the option to search for certain resources, for example, recommendations for: anxiety, insomnia, etc.
+For next steps, I would like to add the option to like and comment on posts. In addition, I would like to have a feature where users can favorite posts. Lastly, I would like to have the option to search for certain resources, for example, recommendations for: anxiety, insomnia, etc.  
+Currently, I also have one bug where users are unable to enter or update their social media links on their profile.
